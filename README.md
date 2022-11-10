@@ -2,9 +2,16 @@
 
 #### 运行
 
-`go mod tidy`
+```
+git clone https://github.com/crayonxiaoxin/Beego_Base_Api.git
 
-`bee run`
+cd Beego_Base_Api
+
+go mod tidy
+
+bee run
+
+```
 
 
 #### 目录结构
@@ -13,28 +20,28 @@
 .
 ├── README.md
 ├── conf
-│   └── app.conf
-├── controllers
+│   └── app.conf                // 配置文件
+├── controllers                 // 控制器
 │   ├── login.go
 │   ├── register.go
 │   └── user.go
 ├── go.mod
 ├── go.sum
 ├── main.go
-├── models
+├── models                      // 模型
 │   ├── login.go
 │   └── user.go
-├── routers
-│   ├── commentsRouter.go
-│   └── router.go
-├── swagger
-│   ├── swagger.json
+├── routers                     // 路由
+│   ├── commentsRouter.go       // bee generate routers 生成
+│   └── router.go               // 路由配置
+├── swagger                     // api 文档
+│   ├── swagger.json            // bee generate docs 生成
 │   └── swagger.yml
 ├── tests
 └── utils
-    ├── db.go
-    ├── gorm.go
-    ├── password.go
-    ├── rc.go
-    └── token.go
+    ├── db.go                   // 连接数据库
+    ├── gorm.go                 // 自定义 GORM Model
+    ├── password.go             // 密码加密解密
+    ├── rc.go                   // 统一返回
+    └── token.go                // jwt token
 ```
