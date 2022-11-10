@@ -1,0 +1,317 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Test API",
+        "description": "beego has a very cool tools to autogenerate documents for your API\n",
+        "version": "v1",
+        "contact": {}
+    },
+    "basePath": "/v1",
+    "paths": {
+        "/login/": {
+            "post": {
+                "tags": [
+                    "login"
+                ],
+                "description": "登入\n\u003cbr\u003e",
+                "operationId": "LoginController.Login",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "username",
+                        "description": "用户名",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "password",
+                        "description": "密码",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/utils.Result"
+                        }
+                    },
+                    "403": {
+                        "description": "user not exist"
+                    }
+                }
+            }
+        },
+        "/register/": {
+            "post": {
+                "tags": [
+                    "register"
+                ],
+                "description": "注册\n\u003cbr\u003e",
+                "operationId": "RegisterController.Login",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "username",
+                        "description": "用户名",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "password",
+                        "description": "密码",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/utils.Result"
+                        }
+                    },
+                    "403": {
+                        "description": "user not exist"
+                    }
+                }
+            }
+        },
+        "/user/": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "获取所有用户\n\u003cbr\u003e",
+                "operationId": "UserController.GetAll",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "登入后返回的token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/utils.Result"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "description": "添加用户\n\u003cbr\u003e",
+                "operationId": "UserController.CreateUser",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "登入后返回的token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "username",
+                        "description": "用户名",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "password",
+                        "description": "密码",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/utils.Result"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/user/{uid}": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "通过id获取用户\n\u003cbr\u003e",
+                "operationId": "UserController.Get",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "登入后返回的token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "uid",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/utils.Result"
+                        }
+                    },
+                    "403": {
+                        "description": ":uid is empty"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "user"
+                ],
+                "description": "更新用户\n\u003cbr\u003e",
+                "operationId": "UserController.Update",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "登入后返回的token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "uid",
+                        "description": "The uid you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "username",
+                        "description": "用户名",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "password",
+                        "description": "密码",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/utils.Result"
+                        }
+                    },
+                    "403": {
+                        "description": ":uid is not int"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "user"
+                ],
+                "description": "删除用户\n\u003cbr\u003e",
+                "operationId": "UserController.Delete",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "登入后返回的token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "uid",
+                        "description": "The uid you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/utils.Result"
+                        }
+                    },
+                    "403": {
+                        "description": "uid is empty"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "utils.Result": {
+            "title": "Result",
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/utils.interface"
+                },
+                "msg": {
+                    "type": "string"
+                },
+                "rc": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "utils.ResultCode": {
+            "title": "ResultCode",
+            "type": "object",
+            "properties": {
+                "msg": {
+                    "type": "string"
+                },
+                "rc": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "utils.interface": {
+            "title": "interface",
+            "type": "object"
+        }
+    },
+    "tags": [
+        {
+            "name": "login",
+            "description": "登入\n"
+        },
+        {
+            "name": "register",
+            "description": "注册\n"
+        },
+        {
+            "name": "user",
+            "description": "用户\n"
+        }
+    ]
+}
