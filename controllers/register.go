@@ -11,7 +11,7 @@ type RegisterController struct {
 	beego.Controller
 }
 
-// @Title Login
+// @Title Register
 // @Description 注册
 // @Param	username		query 	string	true		"用户名"
 // @Param	password		query 	string	true		"密码"
