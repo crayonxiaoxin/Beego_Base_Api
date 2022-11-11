@@ -2,7 +2,7 @@
     "swagger": "2.0",
     "info": {
         "title": "Test API",
-        "description": "beego has a very cool tools to autogenerate documents for your API\n",
+        "description": "Beego API 基础工程\n",
         "version": "v1",
         "contact": {}
     },
@@ -13,6 +13,7 @@
                 "tags": [
                     "login"
                 ],
+                "summary": "登入",
                 "description": "登入\n\u003cbr\u003e",
                 "operationId": "LoginController.Login",
                 "parameters": [
@@ -49,8 +50,9 @@
                 "tags": [
                     "register"
                 ],
+                "summary": "注册",
                 "description": "注册\n\u003cbr\u003e",
-                "operationId": "RegisterController.Login",
+                "operationId": "RegisterController.Register",
                 "parameters": [
                     {
                         "in": "query",
@@ -85,6 +87,7 @@
                 "tags": [
                     "user"
                 ],
+                "summary": "获取所有用户",
                 "description": "获取所有用户\n\u003cbr\u003e",
                 "operationId": "UserController.GetAll",
                 "parameters": [
@@ -94,6 +97,20 @@
                         "description": "登入后返回的token",
                         "required": true,
                         "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "page",
+                        "description": "页码",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "query",
+                        "name": "size",
+                        "description": "每页数量",
+                        "type": "integer",
+                        "format": "int64"
                     }
                 ],
                 "responses": {
@@ -109,6 +126,7 @@
                 "tags": [
                     "user"
                 ],
+                "summary": "添加用户",
                 "description": "添加用户\n\u003cbr\u003e",
                 "operationId": "UserController.CreateUser",
                 "parameters": [
@@ -152,6 +170,7 @@
                 "tags": [
                     "user"
                 ],
+                "summary": "通过id获取用户",
                 "description": "通过id获取用户\n\u003cbr\u003e",
                 "operationId": "UserController.Get",
                 "parameters": [
@@ -186,6 +205,7 @@
                 "tags": [
                     "user"
                 ],
+                "summary": "更新用户",
                 "description": "更新用户\n\u003cbr\u003e",
                 "operationId": "UserController.Update",
                 "parameters": [
@@ -233,6 +253,7 @@
                 "tags": [
                     "user"
                 ],
+                "summary": "删除用户",
                 "description": "删除用户\n\u003cbr\u003e",
                 "operationId": "UserController.Delete",
                 "parameters": [

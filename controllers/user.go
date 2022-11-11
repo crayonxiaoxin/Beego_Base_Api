@@ -13,18 +13,33 @@ type UserController struct {
 }
 
 // @Title GetAll
+// @Summary		获取所有用户
 // @Description 获取所有用户
 // @Param	token		header 	string	    true		"登入后返回的token"
+// @Param   page  		query   int    		false 		"页码"
+// @Param   size  		query   int    		false 		"每页数量"
 // @Success 200 {object} utils.Result
 // @router / [get]
 func (u *UserController) GetAll() {
-	users := models.GetAllUsers()
-	var result = utils.Result{ResultCode: utils.SUCCESS, Data: users}
+	page, err := u.GetInt("page", 0)
+	if err != nil {
+		page = 0
+	}
+	size, err := u.GetInt("size", 0)
+	if err != nil {
+		size = 0
+	}
+	users, count := models.GetAllUsers(page, size)
+	data := make(map[string]interface{})
+	data["list"] = users
+	data["count"] = count
+	var result = utils.Result{ResultCode: utils.SUCCESS, Data: data}
 	u.Data["json"] = result
 	u.ServeJSON()
 }
 
 // @Title Get
+// @Summary		通过id获取用户
 // @Description 通过id获取用户
 // @Param	token	header 	string	true		"登入后返回的token"
 // @Param	uid		path 	string	true		"The key for staticblock"
@@ -50,6 +65,7 @@ func (u *UserController) Get() {
 }
 
 // @Title CreateUser
+// @Summary     添加用户
 // @Description 添加用户
 // @Param	token		header 	string	    true		"登入后返回的token"
 // @Param	username		query 	string	true		"用户名"
@@ -66,6 +82,7 @@ func (u *UserController) Post() {
 }
 
 // @Title Update
+// @Summary     更新用户
 // @Description 更新用户
 // @Param	token		header 	string	true		"登入后返回的token"
 // @Param	uid			path 	string	true		"The uid you want to update"
@@ -89,6 +106,7 @@ func (u *UserController) Put() {
 }
 
 // @Title Delete
+// @Summary     删除用户
 // @Description 删除用户
 // @Param	token	header 	string	true		"登入后返回的token"
 // @Param	uid		path 	string	true		"The uid you want to delete"
