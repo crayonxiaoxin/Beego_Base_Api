@@ -1,17 +1,21 @@
 ## Beego Base Api Project
 
+### 下载
+```
+git clone https://github.com/crayonxiaoxin/Beego_Base_Api.git
+```
+
 ### 准备
+安装 bee 工具，用于生成路由和文档
 ```
 go get -u github.com/beego/beego/v2@latest
 go get -u github.com/beego/bee/v2
 ``` 
 
+[参考资料](http://beego.gocn.vip/beego/zh/developing/)
+
 ### 运行
 ```
-git clone https://github.com/crayonxiaoxin/Beego_Base_Api.git
-
-cd Beego_Base_Api
-
 go mod tidy
 
 bee run
@@ -26,7 +30,7 @@ bee generate routers
 ```
 bee generate docs
 ```
-文档路径：/swagger
+文档地址：/swagger
 
 
 ### 目录结构
