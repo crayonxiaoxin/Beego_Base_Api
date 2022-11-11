@@ -1,6 +1,6 @@
 // @APIVersion v1
 // @Title Test API
-// @Description beego has a very cool tools to autogenerate documents for your API
+// @Description Beego API 基础工程
 package routers
 
 import (

@@ -1,7 +1,12 @@
 ## Beego Base Api Project
 
-#### 运行
+### 准备
+```
+go get -u github.com/beego/beego/v2@latest
+go get -u github.com/beego/bee/v2
+``` 
 
+### 运行
 ```
 git clone https://github.com/crayonxiaoxin/Beego_Base_Api.git
 
@@ -10,12 +15,21 @@ cd Beego_Base_Api
 go mod tidy
 
 bee run
-
 ```
 
+### 生成路由
+```
+bee generate routers
+```
 
-#### 目录结构
+### 生成文档
+```
+bee generate docs
+```
+文档路径：/swagger
 
+
+### 目录结构
 ```
 .
 ├── README.md
