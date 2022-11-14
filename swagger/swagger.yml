@@ -33,6 +33,87 @@ paths:
             $ref: '#/definitions/utils.Result'
         "403":
           description: user not exist
+  /media/:
+    get:
+      tags:
+      - media
+      summary: 获取所有媒体
+      description: |-
+        获取所有媒体
+        <br>
+      operationId: MediaController.GetAll
+      parameters:
+      - in: header
+        name: token
+        description: 登入后返回的token
+        required: true
+        type: string
+      - in: query
+        name: page
+        description: 页码
+        type: integer
+        format: int64
+      - in: query
+        name: size
+        description: 每页数量
+        type: integer
+        format: int64
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/utils.Result'
+  /media/{id}:
+    get:
+      tags:
+      - media
+      summary: 通过id获取文件
+      description: |-
+        通过id获取文件
+        <br>
+      operationId: MediaController.Get
+      parameters:
+      - in: header
+        name: token
+        description: 登入后返回的token
+        required: true
+        type: string
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: integer
+        format: int64
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/utils.Result'
+    delete:
+      tags:
+      - media
+      summary: 删除文件
+      description: |-
+        删除文件
+        <br>
+      operationId: MediaController.Delete
+      parameters:
+      - in: header
+        name: token
+        description: token
+        required: true
+        type: string
+      - in: path
+        name: id
+        description: 文件ID
+        required: true
+        type: integer
+        format: int64
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/utils.Result'
   /register/:
     post:
       tags:
@@ -60,6 +141,31 @@ paths:
             $ref: '#/definitions/utils.Result'
         "403":
           description: user not exist
+  /upload/:
+    post:
+      tags:
+      - upload
+      summary: 上传
+      description: |-
+        上传
+        <br>
+      operationId: UploadController.Upload
+      parameters:
+      - in: header
+        name: token
+        description: token
+        required: true
+        type: string
+      - in: formData
+        name: file
+        description: 文件
+        required: true
+        type: file
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/utils.Result'
   /user/:
     get:
       tags:
@@ -243,3 +349,9 @@ tags:
 - name: user
   description: |
     用户
+- name: upload
+  description: |
+    上传
+- name: media
+  description: |
+    文件

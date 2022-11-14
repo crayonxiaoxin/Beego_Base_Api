@@ -16,9 +16,45 @@ func init() {
             Filters: nil,
             Params: nil})
 
+    beego.GlobalControllerRouter["hello_api/controllers:MediaController"] = append(beego.GlobalControllerRouter["hello_api/controllers:MediaController"],
+        beego.ControllerComments{
+            Method: "GetAllFiles",
+            Router: `/`,
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["hello_api/controllers:MediaController"] = append(beego.GlobalControllerRouter["hello_api/controllers:MediaController"],
+        beego.ControllerComments{
+            Method: "RemoveFile",
+            Router: `/:id`,
+            AllowHTTPMethods: []string{"delete"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["hello_api/controllers:MediaController"] = append(beego.GlobalControllerRouter["hello_api/controllers:MediaController"],
+        beego.ControllerComments{
+            Method: "GetMedia",
+            Router: `/:id`,
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
     beego.GlobalControllerRouter["hello_api/controllers:RegisterController"] = append(beego.GlobalControllerRouter["hello_api/controllers:RegisterController"],
         beego.ControllerComments{
             Method: "Register",
+            Router: `/`,
+            AllowHTTPMethods: []string{"post"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["hello_api/controllers:UploadController"] = append(beego.GlobalControllerRouter["hello_api/controllers:UploadController"],
+        beego.ControllerComments{
+            Method: "UploadFile",
             Router: `/`,
             AllowHTTPMethods: []string{"post"},
             MethodParams: param.Make(),
