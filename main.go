@@ -12,5 +12,8 @@ func main() {
 		beego.BConfig.WebConfig.StaticDir["/swagger"] = "swagger"
 	}
 
+	// 访问静态文件
+	beego.BConfig.WebConfig.StaticDir["/uploads"] = "uploads"
+
 	beego.Run()
 }
