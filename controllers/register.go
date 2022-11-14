@@ -19,10 +19,10 @@ type RegisterController struct {
 // @Success 200 {object} utils.Result
 // @Failure 403 user not exist
 // @router / [post]
-func (u *RegisterController) Register() {
-	username := u.GetString("username")
-	password := u.GetString("password")
+func (c *RegisterController) Register() {
+	username := c.GetString("username")
+	password := c.GetString("password")
 	result := models.Register(&models.User{Username: username, Password: password})
-	u.Data["json"] = result
-	u.ServeJSON()
+	c.Data["json"] = result
+	c.ServeJSON()
 }

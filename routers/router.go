@@ -35,8 +35,11 @@ func init() {
 	// beego.Router("/authorize", &controllers.TokenController{})
 
 	// 设置过滤器（token中间件）
-	NeedToken("/v1/user")
-	NeedToken("/v1/user/*")
+	NeedToken("/v1/user/?:id")
+	// NeedToken("/v1/user/*")
+
+	// 404
+	beego.ErrorController(&controllers.ErrorController{})
 }
 
 // 验证 token

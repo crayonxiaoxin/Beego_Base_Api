@@ -19,10 +19,10 @@ type LoginController struct {
 // @Success 200 {object} utils.Result
 // @Failure 403 user not exist
 // @router / [post]
-func (u *LoginController) Login() {
-	username := u.GetString("username")
-	password := u.GetString("password")
+func (c *LoginController) Login() {
+	username := c.GetString("username")
+	password := c.GetString("password")
 	result := models.Login(&models.User{Username: username, Password: password})
-	u.Data["json"] = result
-	u.ServeJSON()
+	c.Data["json"] = result
+	c.ServeJSON()
 }
